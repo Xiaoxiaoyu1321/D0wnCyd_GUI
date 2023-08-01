@@ -68,7 +68,7 @@ class Frame(wx.Frame):
         screenData = subprocess.Popen(qwert,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
         while True:
             line = screenData.stdout.readline()
-            self.打印控制台内容(line.decode('utf-8').strip("b'"))
+            self.打印控制台内容(line.decode('gbk').strip("b'"))
             if line == b'' or subprocess.Popen.poll(screenData) == 0:
                 screenData.stdout.close()
                 break
