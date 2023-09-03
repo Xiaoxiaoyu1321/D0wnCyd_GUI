@@ -16,20 +16,12 @@
 ```
 wxpython
 subprocess
+tqdm
+requests
 ```
 
-这是必要的库，请您务必要安装，这是安装命令的示例：  
-```
-适用于 Windows
+这是必要的库，请您务必要安装
 
-pip install wxpython
-pip install subprocess
-
-适用于 macOS、Linux（可能）
-
-pip3 install wxpython
-pip3 install subprocess
-```
 
 **请注意，安装命令只是示例，如果您在不同的操作系统或在不同的环境下，命令的使用和库的安装可能会不同，请您查找相关文档，以了解您操作系统的pip如何使用**
 

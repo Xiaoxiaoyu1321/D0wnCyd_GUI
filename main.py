@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-import wx
 import os
+import wx
 import subprocess
 import _thread
 import sys
