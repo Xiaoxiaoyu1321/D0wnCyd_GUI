@@ -4,9 +4,16 @@ import requests
 from tqdm import tqdm
 URL = sys.argv[1]
 path = sys.argv[2]
+URL_min = sys.argv[3]
 
-
-header = {'User-Agent' : "Cydia/0.9 CFNetwork/711.5.6 Darwin/14.0.0"}
+header = {'Host': URL_min,
+          'X-Machine' : "iPhone 3,1" ,
+          'X-Unique-ID':'279491f4831444299947a85b7777269766a8ffd6',
+          'Connection':'keep-alive',
+          'X-Fireware':'7.1.2',
+          'Cache-Control':'max-age=0',
+          'User-Agent':'Telesphoreo APT-HTTP/1.0.592'
+          }
 
 def download(url: str, fname: str):
     # 用流stream的方式获取url的数据

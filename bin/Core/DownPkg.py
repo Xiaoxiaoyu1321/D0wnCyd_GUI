@@ -3,8 +3,7 @@ import sys
 import os
 from tqdm import tqdm
 version="20230073101"
-header = {'User-Agent' : "Cydia/0.9 CFNetwork/711.5.6 Darwin/14.0.0"}
-
+#'Telesphoreo APT-HTTP/1.0.592'
 server = "127.0.0.1"
 abc = "LF"
 path = "Packages"
@@ -12,17 +11,48 @@ path = "Packages"
 try:
     server=sys.argv[1] #服务器地址
     path = sys.argv[2] #目录
+    server_min = sys.argv[3]
+    iPhone_Machine = sys.argv[4]
+    iPhone_Fireware = sys.argv[5]
+    UID = sys.argv[6]
+    UA = sys.argv[7]
+    
+    
+    
+    print("下载地址：",server)
+    print("保存到：" + path)
+    print("请求域名：" ,server_min)
+    print("iPhone型号:" + iPhone_Machine)
+    print("iPhone固件：" + iPhone_Fireware)
+    print("UID:" + UID)
+    print("UA:" + UA)
+    
+    
+    
+    
+    
+    
+    
+    
     if server == "version":
         print(version)
         exit()
         
     print("服务器:" + server)
     print("目录：" + path)
-
-
-    
 except Exception as q:
     print("遇到错误:" + str(q))
+
+header = {'Host': server_min,
+          'X-Machine' : iPhone_Machine ,
+          'X-Unique-ID':UID,
+          'Connection':'keep-alive',
+          'X-Fireware':iPhone_Fireware,
+          'Cache-Control':'max-age=0',
+          'User-Agent': UA
+          }
+
+    
 
 def download(url: str, fname: str):
     # 用流stream的方式获取url的数据
