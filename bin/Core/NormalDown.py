@@ -2,17 +2,24 @@ import os
 import sys
 import requests
 from tqdm import tqdm
+#'Telesphoreo APT-HTTP/1.0.592'
 URL = sys.argv[1]
 path = sys.argv[2]
-URL_min = sys.argv[3]
 
+
+
+URL_min = sys.argv[3]
+iPhoneMachine = sys.argv[4]
+iPhoneFireware = sys.argv[5]
+UID = sys.argv[6]
+UA  = sys.argv[7]
 header = {'Host': URL_min,
-          'X-Machine' : "iPhone 3,1" ,
-          'X-Unique-ID':'279491f4831444299947a85b7777269766a8ffd6',
+          'X-Machine' : iPhoneMachine ,
+          'X-Unique-ID':UID,
           'Connection':'keep-alive',
-          'X-Fireware':'7.1.2',
+          'X-Fireware':iPhoneFireware,
           'Cache-Control':'max-age=0',
-          'User-Agent':'Telesphoreo APT-HTTP/1.0.592'
+          'User-Agent': UA
           }
 
 def download(url: str, fname: str):

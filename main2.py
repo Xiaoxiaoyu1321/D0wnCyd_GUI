@@ -109,6 +109,41 @@ class Frame(wx.Frame):
             if line == b'' or subprocess.Popen.poll(screenData) == 0:
                 screenData.stdout.close()
                 break
+                
+                
+    def startdownloadfile(self,qaqq):
+        空格 = " " 
+        
+        fjfjfj =self.Python命令.GetValue()+ 空格  + CorePath_GetDownloadLink+ 空格 +str(self.chosen)
+        self.打印控制台内容(fjfjfj)
+        nb =  os.popen(fjfjfj)
+        res = nb.read()
+        abc = ""
+        for line in res.splitlines():
+            abc = abc + line
+
+        bcd  = abc.split(" ")
+        abc = bcd[1]
+        
+        源源地址 = self.源地址.GetValue()
+        iPhone型号 = self.型号.GetValue()
+        iPhone固件= self.固件.GetValue()
+        UID = self.标识ID.GetValue()
+        UA = self.UA.GetValue()
+        
+
+        self.打印控制台内容(abc)
+        fjfjfj ="python " + CorePath_NormalDownload + " " +self.请求协议.GetValue() +self.源地址.GetValue() +abc +" .\\" +str(self.chosen) +".deb" + 空格 + 源源地址 + 空格 + iPhone型号 + 空格 + iPhone固件 + 空格 +UID + 空格 + UA
+        self.打印控制台内容(fjfjfj)
+        screenData = subprocess.Popen(fjfjfj,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+        while True:
+            line = screenData.stdout.readline()
+            self.打印控制台内容(line.decode('gbk').strip("b'"))
+            self.列表框1.Append(line.decode('gbk').strip("b'"))
+            if line == b'' or subprocess.Popen.poll(screenData) == 0:
+                screenData.stdout.close()
+                break
+        
     def 下载Packages_按钮被单击(self,event):
         print('下载Packages,按钮被单击')
         _thread.start_new_thread(self.startDownload,(self,))
@@ -119,6 +154,11 @@ class Frame(wx.Frame):
 
     def 下载deb_按钮被单击(self,event):
         print('下载deb,按钮被单击')
+        self.chosen = self.列表框1.GetSelection()+1
+        self.打印控制台内容(str(self.chosen))
+
+        _thread.start_new_thread(self.startdownloadfile,(self,))
+        #self.startdownloadfile(self,)
 
 class myApp(wx.App):
     def  OnInit(self):
